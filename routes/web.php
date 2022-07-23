@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/hello', function(){
+    return view('hello');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -33,3 +37,4 @@ Route::resource('nilai', NilaiController::class);
 Route::get('/test-admin', function(){
     return view('layouts.admin');
 });
+
