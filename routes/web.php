@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\NilaiController;
+use App\Http\Controllers\WaliController;
+use App\Http\Controllers\GuruController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +36,18 @@ Route::resource('jurusan', JurusanController::class);
 
 Route::resource('nilai', NilaiController::class);
 
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    Route::get('/', function () {
+        return view('admin.index');
+    });
+    Route::resource('siswa', SiswaController::class);
+    Route::resource('wali', WaliController::class);
+    Route::resource('guru', GuruController::class);
+
+});
+
 Route::get('/test-admin', function(){
     return view('layouts.admin');
 });
+
 
