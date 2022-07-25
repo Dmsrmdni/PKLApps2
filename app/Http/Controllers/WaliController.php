@@ -47,7 +47,8 @@ class WaliController extends Controller
         }
         $wali->id_siswa = $request->id_siswa;
         $wali->save();
-        return redirect()->route('wali.index')
+        return redirect()
+            ->route('wali.index')
             ->with('success', 'Data berhasil dibuat!');
     }
 
@@ -83,7 +84,8 @@ class WaliController extends Controller
         }
         $wali->id_siswa = $request->id_siswa;
         $wali->save();
-        return redirect()->route('wali.index')
+        return redirect()
+            ->route('wali.index')
             ->with('success', 'Data berhasil dibuat!');
     }
 
@@ -92,8 +94,8 @@ class WaliController extends Controller
         $wali = Wali::findOrFail($id);
         $wali->deleteImage();
         $wali->delete();
-        return redirect()->route('wali.index')
+        return redirect()
+            ->route('wali.index')
             ->with('success', 'Data berhasil dihapus!');
-
     }
 }
